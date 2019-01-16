@@ -1,0 +1,16 @@
+.Column {
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.ToDo {
+  background: blue;
+}
+
+.InProgress {
+  background: pink;
+}
+
+.Done {
+  background: grey;
+}
