@@ -60,9 +60,9 @@ export default class Column extends React.Component {
     return (
       <div className={"Column " + category }>
       <header>
-        <h1>{category}</h1>
-        <h2>({this.state.category_tasks.length})</h2>
-        <button onClick={this.handleAdd}>+</button>
+        <h3>{category}</h3>
+        <button className="add-button" onClick={this.handleAdd}>+</button>
+        <h4>({this.state.category_tasks.length})</h4>
       </header>  
         <div className="task-container"> 
           {cards}

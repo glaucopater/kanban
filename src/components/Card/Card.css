@@ -1,4 +1,38 @@
 .Card {
   border: 1px solid black;
-  display: block;
+  background: tomato;
+  width: 50%;
+  margin: 25px auto;  
+  color: white; 
+  text-align: center;
+}
+
+.card-body {
+  padding: 20px;
+  word-break: break-all;
+  text-align: center; 
+}
+
+.Card .ToDo {
+  background: #2bb4ea;
+}
+
+.Card .InProgress {
+  background: #f76176;
+}
+
+.Card .Done {
+  background: #485e76;
+}
+
+.card-header {
+
+}
+
+.button-remove {  
+  float: right;  
+  background: transparent;  
+  font-size: 1.2em;
+  color: white;
+  border: none;
 }

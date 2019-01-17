@@ -8,9 +8,13 @@ const Card = props => {
   }
 
   return (
-  <div className="Card">
-    <button onClick={handleOnClick}>x</button>
-    {props.text}
+  <div className={"Card " + props.category }>
+    <header className="card-header">
+      <button className="button-remove" onClick={handleOnClick}>x</button>
+    </header>
+    <div className="card-body">
+      {props.text}
+    </div>
   </div>)
   
 };
