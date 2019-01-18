@@ -1,16 +1,42 @@
 .Column {
-  border: 1px solid black;
-  display: inline-block;
+  border: 1px solid black; 
+  display: flex;
+  flex-direction: column; 
+  flex-grow: 1;
+  flex-basis: auto;
+  color: white;
 }
 
 .ToDo {
-  background: blue;
+  background: #b5e4f8;
 }
 
+div.Column.ToDo > header {
+  background: #0093e1;
+}
+ 
 .InProgress {
-  background: pink;
+  background: #fdc0c2;
+}
+
+.InProgress header {
+  background: #f50057;
 }
 
 .Done {
-  background: grey;
+  background: #bac2cb;
+}
+
+.Done header {
+  background: #0b2542;
+}
+
+
+.add-button {  
+  background: transparent; 
+  font-size: 1.2em;
+  float: right;
+  outline: none;
+  color: white;
+  border: none;
 }

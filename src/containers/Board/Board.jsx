@@ -1,12 +1,18 @@
 import React from "react";
 import "./Board.css";
-import Column from "../Column/Column"; 
-import { CATEGORIES } from "../../common/constants";
+import Column from "../Column/Column";  
 
 export default class Board extends React.Component {
+
   render() {
-    const columns = CATEGORIES.map((category, key) => {
-      return <Column key={key} category={category} />;
+    console.log(this.props);
+    const columns = this.props.CATEGORIES.map((category, key) => {
+      return <Column key={key} 
+      category={category}
+      addCard={this.props.addCard}
+      removeCard={this.props.removeCard}
+      moveCard={this.props.moveCard}
+      />;
     });
     return <div className="Board">{columns}</div>;
   }
