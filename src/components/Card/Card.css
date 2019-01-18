@@ -5,12 +5,14 @@
   margin: 25px auto;  
   color: white; 
   text-align: center;
+  padding: 15px;
 }
 
 .card-body {
   padding: 20px;
   word-break: break-all;
   text-align: center; 
+  outline: 1px solid;
 }
 
 .Card .ToDo {
