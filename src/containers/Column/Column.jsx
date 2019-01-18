@@ -1,9 +1,8 @@
 import React from "react";  
 import Card from "../../components/Card/Card"; 
 import "./Column.css";
-import { DATA } from "../../common/constants";
-import  "../../common/helpers";
-import { getRandomInt } from "../../common/helpers";
+import { DATA } from "../../common/data"; 
+import { getRandomInt } from "../../common/helpers"; 
 
 
 export default class Column extends React.Component {
@@ -29,15 +28,19 @@ export default class Column extends React.Component {
     const randomIndex = getRandomInt(DATA.length);
     console.log("click add item ",0,DATA.length, randomIndex);
     const random_task = DATA.filter((task) => { return task.index === randomIndex && task.category === this.state.category } );
-
     const category_tasks = [...random_task, ...this.state.category_tasks];
     this.setState({category_tasks});
+
+    this.props.addCard(this.state.category);
   }
 
   handleRemove = (index_to_remove) => {
-    console.log("click remove item ", index_to_remove);
+    console.log("click remove item ", index_to_remove, " from ", this.state.category_tasks);
     const category_tasks = this.state.category_tasks.filter((task) => { return  task.index !== index_to_remove } );
+    console.log(category_tasks);
     this.setState({category_tasks});
+
+    this.props.removeCard(index_to_remove);
   }
 
   componentDidMount() {
@@ -84,7 +87,12 @@ export default class Column extends React.Component {
       text: "new ",
       color: "red"
     });
+  
     this.setState({tasks: current_tasks});
+    this.handleRemove(taskId);
+
+    
+    this.props.moveCard(taskId,this.state.category);
   }
 
   render() {
