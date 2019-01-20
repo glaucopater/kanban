@@ -1,9 +1,13 @@
+
+import { read_cookie, bake_cookie }  from 'sfcookies';
+import { BOARD_COOKIE } from '../common/constants';
 import {
     ADD_CARD,
     REMOVE_CARD,
     MOVE_CARD,
     RECEIVE_DATA,
-    UPDATE_BOARD
+    UPDATE_BOARD,
+    CREATE_CARD
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -28,9 +32,13 @@ const board_store = (state = initialState.board_store, action ) => {
         case UPDATE_BOARD:  
             board_store = Object.assign({}, state, action.board_store);
             break; 
+        case CREATE_CARD:  
+            board_store = Object.assign({}, state, action.board_store);
+            break; 
         default: 
-            board_store = state;
+            board_store = read_cookie(BOARD_COOKIE) || state;
     }  
+    bake_cookie(BOARD_COOKIE, board_store);
     return board_store;
 }
 

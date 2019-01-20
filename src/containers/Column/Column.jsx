@@ -1,8 +1,8 @@
 import React from "react";  
 import Card from "../../components/Card/Card"; 
-import "./Column.css";
-//import { DATA } from "../../common/data"; 
+import "./Column.scss";
 import { getRandomInt } from "../../common/helpers"; 
+import PropTypes from 'prop-types';
 
 export default class Column extends React.Component {
   constructor(props) {
@@ -10,9 +10,9 @@ export default class Column extends React.Component {
     this.state = {
       category: this.props.category,
       category_tasks: []
-    };
-    this.handleRemove = this.handleRemove.bind(this);
+    }; 
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
     this.handleOnDragOver = this.handleOnDragOver.bind(this);
     this.handleOnDrop = this.handleOnDrop.bind(this);
   }
@@ -22,20 +22,20 @@ export default class Column extends React.Component {
   }
 
   handleAdd = () => {
-    const maxNum = this.props.data[this.state.category].length ? this.props.data[this.state.category].length + 100 : 100;  
+    const maxNum = this.props.category_tasks.length ? this.props.category_tasks.length + 100 : 100;  
     const randomIndex = getRandomInt(maxNum); 
     const new_task = { id: randomIndex + 100 , text : "text"+randomIndex }; 
-    const category_tasks = [new_task, ...this.state.category_tasks];
+    const category_tasks = [new_task, ...this.props.category_tasks];
     this.setState({category_tasks});
-    this.props.addCard(this.state.category);
+    this.props.createCard(new_task, this.props.category);
   }
 
-  handleRemove = (id_to_remove) => {
-    const category_tasks = this.state.category_tasks.filter((task) => { return  task.id !== id_to_remove } );
+  handleRemove = (card_id_to_remove) => {
+    console.log("removeCard", this.state, this.props, card_id_to_remove);
+    const category_tasks = this.props.category_tasks.filter((task) => { return  task.id !== card_id_to_remove } );
     this.setState({category_tasks});
-    this.props.updateBoard(this.state.category_tasks);
+    this.props.removeCardFromColumn(card_id_to_remove, this.state.category);
   }
-
 
   handleOnDragOver(ev){ 
     ev.preventDefault();
@@ -47,7 +47,7 @@ export default class Column extends React.Component {
     this.moveTask(id, sourceCategory);
   }
 
-  moveTask(taskId,sourceCategory){ 
+  moveTask(taskId, sourceCategory){ 
     this.props.moveCard(taskId, sourceCategory, this.state.category);
   }
 
@@ -60,7 +60,7 @@ export default class Column extends React.Component {
           text={task.text}
           bgcolor={task.bgcolor} 
           category={category} 
-          handleRemove={this.handleRemove}/>
+          removeCard={this.handleRemove}/>
         });
     
     return (
@@ -80,4 +80,9 @@ export default class Column extends React.Component {
       </div>
     );
   }
+}
+
+
+Column.propTypes = { 
+  category_tasks: PropTypes.array.isRequired
 }

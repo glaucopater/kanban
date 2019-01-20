@@ -1,8 +1,9 @@
 import React from "react";
-import "./Board.css";
+import "./Board.scss";
 import Column from "../Column/Column";  
 import { connect } from 'react-redux';
 import { fetchData , updateBoard } from '../../actions/actions';  
+import PropTypes from 'prop-types';
 
 export class Board extends React.Component {
   constructor(props){
@@ -13,20 +14,14 @@ export class Board extends React.Component {
   componentDidMount(){
     this.props.fetchData();
   }
-  
-  updateBoard = (tasks) => {
-    this.setState({board_store: tasks }); 
-    this.props.updateBoard(this.state.board_store);
-  }
 
   render() {
     const columns = Object.keys(this.props.board_store).map((category, key) => {
       return <Column key={key} 
       category={category}
-      addCard={this.props.addCard}
-      removeCard={this.props.removeCard}
+      removeCardFromColumn={this.props.removeCardFromColumn}
       moveCard={this.props.moveCard}
-      updateBoard={this.updateBoard}
+      createCard={this.props.createCard}
       category_tasks={this.props.board_store[category]}/>;
     });
 
@@ -34,5 +29,12 @@ export class Board extends React.Component {
   }
 }
 
-
 export default connect(state => { return { board_store: state.board_store }}, { fetchData, updateBoard })(Board);
+
+Board.propTypes = { 
+  category: PropTypes.string.isRequired,
+  category_tasks: PropTypes.array.isRequired,
+  removeCardFromColumn: PropTypes.func.isRequired, 
+  moveCard: PropTypes.func.isRequired,
+  createCard: PropTypes.func.isRequired
+}

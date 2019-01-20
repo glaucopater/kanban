@@ -1,0 +1,33 @@
+@import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
+
+.Card {
+  border: 1px solid $black;
+  width: 50%;
+  margin: 5 * $offsetWidth auto;  
+  color: $white; 
+  text-align: center;
+  padding: 3 * $offsetWidth;
+}
+
+.card-body {
+  padding: 4 * $offsetWidth;
+  word-break: break-all;
+  text-align: center; 
+}
+
+.ToDo .Card {
+  background: $color-card-todo;
+}
+
+.InProgress .Card  {
+  background: $color-card-inprogress;
+}
+
+.Done .Card {
+  background: $color-card-done;
+}
+
+.button-remove {  
+  @include button();
+}

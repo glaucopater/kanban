@@ -1,5 +1,7 @@
 import * as constants from './actionTypes';
 import { DATA }  from "../common/data";
+import { read_cookie }  from 'sfcookies';
+import { BOARD_COOKIE } from '../common/constants';
 
 export const moveCard = (cardId, sourceCategory, destinationCategory) => {
         return (dispatch, getState) => {
@@ -18,7 +20,23 @@ export const addCard = (board_store, cardId, sourceCategory, destinationCategory
     }
 }
 
+export const createCard = (newCard, destinationCategory) => {
+    return (dispatch, getState) => {
+        const board_store = getState().board_store;
+        dispatch(createNewCard(board_store, newCard, destinationCategory));  
+    };
+};
+
+export const createNewCard = (board_store, newCard, destinationCategory) => { 
+    board_store[destinationCategory] = [newCard, ...board_store[destinationCategory] ]; 
+    return {
+        type: constants.CREATE_CARD,
+        board_store
+    }
+}
+
 export const removeCard =  (board_store, cardId, sourceCategory) => { 
+    console.log(board_store, cardId, sourceCategory);
     if (board_store) {
         board_store[sourceCategory] = board_store[sourceCategory].filter((card) => { return card.id !== +cardId });
     } 
@@ -28,9 +46,16 @@ export const removeCard =  (board_store, cardId, sourceCategory) => {
     }
 }
 
+export const removeCardFromColumn = (cardId, sourceCategory) => {
+    return (dispatch, getState) => {
+        const board_store = getState().board_store;
+        dispatch(removeCard(board_store, cardId, sourceCategory));  
+    };
+};
+
 export const fetchData = () => { 
     return dispatch => {
-        dispatch({ type: constants.RECEIVE_DATA, board_store: DATA })
+        dispatch({ type: constants.RECEIVE_DATA, board_store: read_cookie(BOARD_COOKIE) || DATA })
     };
 };
 
