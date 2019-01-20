@@ -4,24 +4,19 @@ import "./Card.css";
 const Card = props => {
 
   const handleOnClick = () => {
-    props.handleRemove(props.index);
+    props.handleRemove(props.id);
   }
 
   const handleOnDragStart = (ev,id) => { 
     ev.dataTransfer.setData("id", id);
+    ev.dataTransfer.setData("sourceCategory", props.category);
     console.log("handleOnDragStart", id);
   }
 
-  const handleOnDragEnd = (ev,id) => { 
-      console.log("handleOnDragEnd");
-     // ev.dataTransfer.setData("id", id);
-    }
-
   return (
     <div className={"Card " + props.category} 
-    onDragStart={e => handleOnDragStart(e, props.index)}  
-    draggable 
-    onDragEnd={handleOnDragEnd}  
+    onDragStart={e => handleOnDragStart(e, props.id)}  
+    draggable  
      >
     <header className="card-header">
       <button className="button-remove" onClick={handleOnClick}>x</button>

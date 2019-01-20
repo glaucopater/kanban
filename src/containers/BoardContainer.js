@@ -3,8 +3,8 @@ import { addCard, removeCard, moveCard } from '../actions/actions';
 import Board from './Board/Board';
 
 const mapStateToProps = state => {
-    return {
-        CATEGORIES: state.categories_store
+    return { 
+        board_store: state.board_store 
     };
 };
 
