@@ -1,7 +1,6 @@
 import React from "react";  
 import Card from "../../components/Card/Card"; 
-import "./Column.scss";
-import { getRandomInt } from "../../common/helpers"; 
+import "./Column.scss"; 
 import PropTypes from 'prop-types';
 
 export default class Column extends React.Component {
@@ -17,14 +16,10 @@ export default class Column extends React.Component {
     this.handleOnDrop = this.handleOnDrop.bind(this);
   }
 
-  handleOnClick(){
-    console.log("click");
-  }
-
   handleAdd = () => {
-    const maxNum = this.props.category_tasks.length ? this.props.category_tasks.length + 100 : 100;  
-    const randomIndex = getRandomInt(maxNum); 
-    const new_task = { id: randomIndex + 100 , text : "text"+randomIndex }; 
+    const maxIdPerCategory = Math.max(...this.props.category_tasks.map(o => o.id), 0); 
+    const nextId = maxIdPerCategory + 1;
+    const new_task = { id: nextId , text : "Card " + nextId}; 
     const category_tasks = [new_task, ...this.props.category_tasks];
     this.setState({category_tasks});
     this.props.createCard(new_task, this.props.category);
@@ -64,7 +59,6 @@ export default class Column extends React.Component {
           return <Card key={key} 
           id={task.id} 
           text={task.text}
-          bgcolor={task.bgcolor} 
           category={category} 
           removeCard={this.handleRemove}
           updateCard={this.handleUpdate}/>
@@ -88,7 +82,6 @@ export default class Column extends React.Component {
     );
   }
 }
-
 
 Column.propTypes = { 
   category_tasks: PropTypes.array.isRequired

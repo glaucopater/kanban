@@ -12,7 +12,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-    board_store: []
+    board_store: {}
 };
 
 const board_store = (state = initialState.board_store, action ) => {
