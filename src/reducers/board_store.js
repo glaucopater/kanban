@@ -25,10 +25,10 @@ const board_store = (state = initialState.board_store, action ) => {
             board_store = Object.assign({}, state, action.board_store);
             break; 
         case MOVE_CARD: 
-            board_store =  action.board_store;
+            board_store = Object.assign({}, state, action.board_store);
             break; 
         case RECEIVE_DATA: 
-            board_store =  action.board_store;
+            board_store =  Object.assign({}, state, action.board_store);
             break; 
         case UPDATE_BOARD:  
             board_store = Object.assign({}, state, action.board_store);
