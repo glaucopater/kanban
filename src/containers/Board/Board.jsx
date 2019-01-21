@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 export class Board extends React.Component {
   constructor(props){
     super(props);
-    this.state= { board_store: [] };
+    this.state= { board_store: {} };
   }
 
   componentDidMount(){
@@ -16,7 +16,6 @@ export class Board extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const columns = Object.keys(this.props.board_store).map((category, key) => {
       return <Column key={key} 
       category={category}
@@ -31,7 +30,14 @@ export class Board extends React.Component {
   }
 }
 
-export default connect(state => { return { board_store: state.board_store }}, { fetchData })(Board);
+export default connect(state => {  
+  let board_store;
+  if(state.board_store.constructor === Array){
+    board_store = {};
+  }
+  else 
+    board_store = state.board_store;
+  return { board_store: board_store }}, { fetchData })(Board);
 
 Board.propTypes = {
   board_store: PropTypes.object.isRequired,

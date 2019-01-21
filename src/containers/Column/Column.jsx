@@ -17,10 +17,6 @@ export default class Column extends React.Component {
     this.handleOnDrop = this.handleOnDrop.bind(this);
   }
 
-  handleOnClick(){
-    console.log("click");
-  }
-
   handleAdd = () => {
     const maxNum = this.props.category_tasks.length ? this.props.category_tasks.length + 100 : 100;  
     const randomIndex = getRandomInt(maxNum); 
@@ -88,7 +84,6 @@ export default class Column extends React.Component {
     );
   }
 }
-
 
 Column.propTypes = { 
   category_tasks: PropTypes.array.isRequired
