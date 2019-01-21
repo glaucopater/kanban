@@ -63,7 +63,14 @@ export const removeCardFromColumn = (cardId, sourceCategory) => {
 
 export const fetchData = () => { 
     return dispatch => {
-        dispatch({ type: constants.RECEIVE_DATA, board_store: read_cookie(BOARD_COOKIE) ? read_cookie(BOARD_COOKIE) : DATA })
+        console.log("fetchData");
+        const board_store = read_cookie(BOARD_COOKIE);
+        let data;
+        if (board_store.length > 0){
+            data = board_store;
+        } else 
+            data = DATA;
+        dispatch({ type: constants.RECEIVE_DATA, board_store: data })
     };
 };
 
