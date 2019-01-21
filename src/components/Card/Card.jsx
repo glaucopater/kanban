@@ -6,7 +6,7 @@ export class Card extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = { editable: false, value: this.props.text };
+    this.state = { editable: false, value: '' };
     this.handleOnEdit = this.handleOnEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleOnRemove = this.handleOnRemove.bind(this);
@@ -42,7 +42,7 @@ export class Card extends React.Component{
   }
 
   render(){
-    const content = this.state.editable ? this.getInputField(this.state.value) : this.state.value;
+    const content = this.state.editable ? this.getInputField(this.state.text) : this.props.text;
     return (
     <div className={"Card " + this.props.category} 
       onDragStart={e => this.handleOnDragStart(e, this.props.id)}  
