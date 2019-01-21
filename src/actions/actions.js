@@ -11,6 +11,15 @@ export const moveCard = (cardId, sourceCategory, destinationCategory) => {
         };
     };
 
+export const updateCard = (card, destinationCategory) => {
+    return (dispatch, getState) => {
+        const board_store = getState().board_store; 
+        const updatedCard = card;
+        dispatch(removeCard(board_store, card.id, destinationCategory));  
+        dispatch(createNewCard(board_store, updatedCard, destinationCategory)); 
+    };
+}
+
 export const addCard = (board_store, cardId, sourceCategory, destinationCategory) => { 
     const cardToMove = board_store[sourceCategory].filter((card) => { return card.id === +cardId });
     board_store[destinationCategory] = [...cardToMove, ...board_store[destinationCategory] ]; 
@@ -35,8 +44,7 @@ export const createNewCard = (board_store, newCard, destinationCategory) => {
     }
 }
 
-export const removeCard =  (board_store, cardId, sourceCategory) => { 
-    console.log(board_store, cardId, sourceCategory);
+export const removeCard = (board_store, cardId, sourceCategory) => {  
     if (board_store) {
         board_store[sourceCategory] = board_store[sourceCategory].filter((card) => { return card.id !== +cardId });
     } 
@@ -58,7 +66,6 @@ export const fetchData = () => {
         dispatch({ type: constants.RECEIVE_DATA, board_store: read_cookie(BOARD_COOKIE) || DATA })
     };
 };
-
 
 export const receiveData =  (data, state)  => {
     return {

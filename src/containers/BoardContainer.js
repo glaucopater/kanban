@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addCard, removeCard, moveCard, removeCardFromColumn, createCard } from '../actions/actions'; 
+import { addCard, removeCard, moveCard, removeCardFromColumn, createCard, updateCard } from '../actions/actions'; 
 import Board from './Board/Board';
 
 const mapStateToProps = state => {
@@ -24,6 +24,9 @@ const mapDispatchToProps = dispatch => {
         },
         createCard: (card,destinationCategory) => {
             dispatch(createCard(card,destinationCategory));
+        },
+        updateCard: (card,destinationCategory) => {
+            dispatch(updateCard(card,destinationCategory));
         }
     };
 };

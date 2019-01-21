@@ -1,19 +1,24 @@
 @import "../../sass/variables.scss";
 @import "../../sass/mixins.scss";
 
-.Card {
-  border: 1px solid $black;
+.Card { 
   width: 50%;
   margin: 5 * $offsetWidth auto;  
   color: $white; 
-  text-align: center;
-  padding: 3 * $offsetWidth;
+  text-align: center; 
+  position: relative; 
+  @include box-shadow(0 $offsetWidth 3 * $offsetWidth -$offsetWidth rgba($lightgrey, 0.1));
+}
+
+.card-header {
+  outline: 1px solid $blue;
 }
 
 .card-body {
-  padding: 4 * $offsetWidth;
-  word-break: break-all;
+  padding: 2 * $offsetWidth; 
   text-align: center; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ToDo .Card {
@@ -30,4 +35,16 @@
 
 .button-remove {  
   @include button();
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+textarea {
+  overflow: hidden;
+  width: 80%
 }

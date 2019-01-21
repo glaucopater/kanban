@@ -31,11 +31,13 @@ ShallowWrapper {
           >
             +
           </button>
-          <h4>
+          <div
+            className="counter"
+          >
             (
             0
             )
-          </h4>
+          </div>
         </header>,
         <div
           className="task-container droppable"
@@ -63,11 +65,13 @@ ShallowWrapper {
             >
               +
             </button>,
-            <h4>
+            <div
+              className="counter"
+            >
               (
               0
               )
-            </h4>,
+            </div>,
           ],
         },
         "ref": null,
@@ -106,6 +110,7 @@ ShallowWrapper {
                 0,
                 ")",
               ],
+              "className": "counter",
             },
             "ref": null,
             "rendered": Array [
@@ -113,7 +118,7 @@ ShallowWrapper {
               0,
               ")",
             ],
-            "type": "h4",
+            "type": "div",
           },
         ],
         "type": "header",
@@ -151,11 +156,13 @@ ShallowWrapper {
             >
               +
             </button>
-            <h4>
+            <div
+              className="counter"
+            >
               (
               0
               )
-            </h4>
+            </div>
           </header>,
           <div
             className="task-container droppable"
@@ -183,11 +190,13 @@ ShallowWrapper {
               >
                 +
               </button>,
-              <h4>
+              <div
+                className="counter"
+              >
                 (
                 0
                 )
-              </h4>,
+              </div>,
             ],
           },
           "ref": null,
@@ -226,6 +235,7 @@ ShallowWrapper {
                   0,
                   ")",
                 ],
+                "className": "counter",
               },
               "ref": null,
               "rendered": Array [
@@ -233,7 +243,7 @@ ShallowWrapper {
                 0,
                 ")",
               ],
-              "type": "h4",
+              "type": "div",
             },
           ],
           "type": "header",

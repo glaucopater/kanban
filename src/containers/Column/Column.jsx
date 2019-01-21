@@ -30,11 +30,17 @@ export default class Column extends React.Component {
     this.props.createCard(new_task, this.props.category);
   }
 
-  handleRemove = (card_id_to_remove) => {
-    console.log("removeCard", this.state, this.props, card_id_to_remove);
+  handleRemove = (card_id_to_remove) => { 
     const category_tasks = this.props.category_tasks.filter((task) => { return  task.id !== card_id_to_remove } );
     this.setState({category_tasks});
     this.props.removeCardFromColumn(card_id_to_remove, this.state.category);
+  }
+
+  handleUpdate = (card) => {
+    const new_task = card;
+    const category_tasks = [new_task, ...this.props.category_tasks];
+    this.setState({category_tasks});
+    this.props.updateCard(new_task, this.props.category);
   }
 
   handleOnDragOver(ev){ 
@@ -60,7 +66,8 @@ export default class Column extends React.Component {
           text={task.text}
           bgcolor={task.bgcolor} 
           category={category} 
-          removeCard={this.handleRemove}/>
+          removeCard={this.handleRemove}
+          updateCard={this.handleUpdate}/>
         });
     
     return (
@@ -70,9 +77,9 @@ export default class Column extends React.Component {
       onDragOver={this.handleOnDragOver} 
       droppable="true" >
       <header>
-        <h3>{category}</h3>
+        <h3>{category.split(/(?=[A-Z])/).join(" ")}</h3>
         <button className="add-button" onClick={this.handleAdd}>+</button>
-        <h4>({category_tasks.length})</h4>
+        <div className="counter">({category_tasks.length})</div>
       </header>  
         <div className="task-container droppable"> 
           {cards}

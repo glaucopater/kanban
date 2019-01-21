@@ -7,7 +7,8 @@ import {
     MOVE_CARD,
     RECEIVE_DATA,
     UPDATE_BOARD,
-    CREATE_CARD
+    CREATE_CARD,
+    UPDATE_CARD
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -33,6 +34,9 @@ const board_store = (state = initialState.board_store, action ) => {
             board_store = Object.assign({}, state, action.board_store);
             break; 
         case CREATE_CARD:  
+            board_store = Object.assign({}, state, action.board_store);
+            break; 
+        case UPDATE_CARD:  
             board_store = Object.assign({}, state, action.board_store);
             break; 
         default: 

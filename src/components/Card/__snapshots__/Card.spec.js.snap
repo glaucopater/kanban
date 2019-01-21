@@ -21,18 +21,15 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <header
-          className="card-header"
+        <button
+          className="button-remove"
+          onClick={[Function]}
         >
-          <button
-            className="button-remove"
-            onClick={[Function]}
-          >
-            x
-          </button>
-        </header>,
+          x
+        </button>,
         <div
           className="card-body"
+          onClick={[Function]}
         >
           abc
         </div>,
@@ -48,29 +45,13 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <button
-            className="button-remove"
-            onClick={[Function]}
-          >
-            x
-          </button>,
-          "className": "card-header",
+          "children": "x",
+          "className": "button-remove",
+          "onClick": [Function],
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "x",
-            "className": "button-remove",
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": "x",
-          "type": "button",
-        },
-        "type": "header",
+        "rendered": "x",
+        "type": "button",
       },
       Object {
         "instance": null,
@@ -79,6 +60,7 @@ ShallowWrapper {
         "props": Object {
           "children": "abc",
           "className": "card-body",
+          "onClick": [Function],
         },
         "ref": null,
         "rendered": "abc",
@@ -94,18 +76,15 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <header
-            className="card-header"
+          <button
+            className="button-remove"
+            onClick={[Function]}
           >
-            <button
-              className="button-remove"
-              onClick={[Function]}
-            >
-              x
-            </button>
-          </header>,
+            x
+          </button>,
           <div
             className="card-body"
+            onClick={[Function]}
           >
             abc
           </div>,
@@ -121,29 +100,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <button
-              className="button-remove"
-              onClick={[Function]}
-            >
-              x
-            </button>,
-            "className": "card-header",
+            "children": "x",
+            "className": "button-remove",
+            "onClick": [Function],
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "x",
-              "className": "button-remove",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": "x",
-            "type": "button",
-          },
-          "type": "header",
+          "rendered": "x",
+          "type": "button",
         },
         Object {
           "instance": null,
@@ -152,6 +115,7 @@ ShallowWrapper {
           "props": Object {
             "children": "abc",
             "className": "card-body",
+            "onClick": [Function],
           },
           "ref": null,
           "rendered": "abc",

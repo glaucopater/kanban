@@ -17,37 +17,19 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <h1>
-          Kanban
-        </h1>,
-        <Connect(Connect(Board)) />,
-      ],
+      "children": <Connect(Connect(Board)) />,
       "className": "App",
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Kanban",
-        },
-        "ref": null,
-        "rendered": "Kanban",
-        "type": "h1",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {},
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -56,37 +38,19 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [
-          <h1>
-            Kanban
-          </h1>,
-          <Connect(Connect(Board)) />,
-        ],
+        "children": <Connect(Connect(Board)) />,
         "className": "App",
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Kanban",
-          },
-          "ref": null,
-          "rendered": "Kanban",
-          "type": "h1",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       "type": "div",
     },
   ],

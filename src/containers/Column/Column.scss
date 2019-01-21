@@ -2,20 +2,32 @@
 @import "../../sass/mixins.scss";
 
 .Column {
-  border: 1px solid black; 
+  border: 1px solid $white; 
   display: flex;
   flex-direction: column; 
   flex-grow: 1;
   flex-basis: auto;
+  min-width: 33%;
   color: white;
   text-align: center;
+  > h3 {
+    padding: $offsetWidth;
+    margin: $offsetWidth;
+  }
+  > header {
+    position: relative;
+    border-bottom: 2px solid $white;
+    .counter {
+      margin-bottom: $offsetWidth;
+    }
+  }
 }
 
 .ToDo {
   background: $color-column-todo;
 }
 
-div.Column.ToDo > header {
+.ToDo > header {
   background: $color-column-header-todo;
 }
 
@@ -37,4 +49,7 @@ div.Column.ToDo > header {
 
 .add-button {
   @include button();
+  position: absolute;
+  top: 50%;
+  right: 0;
 }
