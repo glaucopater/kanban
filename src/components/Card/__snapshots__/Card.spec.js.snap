@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders properly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Card
+    id={1}
+    text="abc"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <button
+          className="button-remove"
+          onClick={[Function]}
+        >
+          x
+        </button>,
+        <div
+          className="card-body"
+          onClick={[Function]}
+        >
+          abc
+        </div>,
+      ],
+      "className": "Card undefined",
+      "draggable": true,
+      "onDragStart": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "x",
+          "className": "button-remove",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "x",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "abc",
+          "className": "card-body",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "abc",
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <button
+            className="button-remove"
+            onClick={[Function]}
+          >
+            x
+          </button>,
+          <div
+            className="card-body"
+            onClick={[Function]}
+          >
+            abc
+          </div>,
+        ],
+        "className": "Card undefined",
+        "draggable": true,
+        "onDragStart": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "x",
+            "className": "button-remove",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "x",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "abc",
+            "className": "card-body",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "abc",
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;
