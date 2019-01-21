@@ -49,7 +49,9 @@ export default class Column extends React.Component {
   }
 
   moveTask(taskId, sourceCategory){ 
-    this.props.moveCard(taskId, sourceCategory, this.state.category);
+    if(sourceCategory !== this.state.category){
+      this.props.moveCard(taskId, sourceCategory, this.state.category);
+    }
   }
 
   render() { 
