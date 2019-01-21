@@ -1,6 +1,11 @@
+
+@import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
+
 .Board {  
     display: flex;
     flex-direction: row;
-    width: 100%;
+    max-width: $screen-ph-max;  
     font-family: 'Questrial', sans-serif;
+    margin: 0 auto;
 }
