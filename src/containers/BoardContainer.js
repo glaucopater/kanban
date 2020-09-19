@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addCard, removeCard, moveCard, removeCardFromColumn, createCard, updateCard } from '../actions/actions'; 
+import { addCard, removeCard, moveCard, removeCardFromColumn, createCard, updateCard } from '../store/actions/actions'; 
 import Board from './Board/Board';
 
 const mapStateToProps = state => {

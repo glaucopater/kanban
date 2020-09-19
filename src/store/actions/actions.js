@@ -1,7 +1,7 @@
 import * as constants from './actionTypes';
-import { DATA }  from "../common/data";
+import { DATA }  from "../../common/data";
 import { read_cookie }  from 'sfcookies';
-import { BOARD_COOKIE } from '../common/constants';
+import { BOARD_COOKIE } from '../../common/constants';
 
 export const moveCard = (cardId, sourceCategory, destinationCategory) => {
         return (dispatch, getState) => {

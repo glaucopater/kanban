@@ -2,7 +2,7 @@ import React from "react";
 import "./Board.scss";
 import Column from "../Column/Column";  
 import { connect } from 'react-redux';
-import { fetchData } from '../../actions/actions';  
+import { fetchData } from '../../store/actions/actions';  
 import PropTypes from 'prop-types';
 
 export class Board extends React.Component {
