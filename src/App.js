@@ -1,10 +1,10 @@
-import React from 'react'; 
-import { BoardContainer } from "./containers/BoardContainer";  
+import React from "react";
+import Board from "./containers/Board";
 
 function App() {
   return (
     <div className="App">
-      <BoardContainer />
+      <Board />
     </div>
   );
 }
