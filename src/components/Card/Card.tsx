@@ -1,11 +1,29 @@
 import React from "react";
 import "./Card.scss";
-import PropTypes from "prop-types";
 
-export class Card extends React.Component {
-  constructor(props) {
+interface ICardProps {
+  category: string;
+  category_tasks?: any;
+  createCard?: any;
+  removeCard?: any;
+  updateCard?: any;
+  editable?: boolean;
+  text?: string;
+  value?: string;
+  id: number;
+}
+
+interface ICardState {
+  id?: number;
+  text?: string;
+  value?: string;
+  editable?: boolean;
+}
+
+export class Card extends React.Component<ICardProps, ICardState> {
+  constructor(props: ICardProps) {
     super(props);
-    this.state = { editable: false, value: "" };
+    this.state = { editable: false, value: "", text: "", id: 0 };
     this.handleOnEdit = this.handleOnEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleOnRemove = this.handleOnRemove.bind(this);
@@ -19,19 +37,19 @@ export class Card extends React.Component {
     this.props.removeCard(this.props.id);
   };
 
-  handleOnBlur = (event) => {
+  handleOnBlur = (event: { target: { value: string; }; }) => {
     const cleanedValue = event.target.value.trim();
     if (cleanedValue !== "") {
       this.setState({ editable: false, value: event.target.value });
-      this.props.updateCard({ id: this.props.id, text: this.state.value });
+      this.props.updateCard({ id: this.props.id, text: this.state.text });
     }
   };
 
-  handleChange = (event) => {
+  handleChange = (event: any) => {
     this.setState({ value: event.target.value });
   };
 
-  handleOnDragStart = (ev, id) => {
+  handleOnDragStart = (ev: any, id: number) => {
     ev.dataTransfer.setData("id", id);
     ev.dataTransfer.setData("sourceCategory", this.props.category);
   };
@@ -68,8 +86,3 @@ export class Card extends React.Component {
 }
 
 export default Card;
-
-Card.propTypes = {
-  id: PropTypes.number.isRequired,
-  text: PropTypes.string,
-};

@@ -3,10 +3,27 @@ import "./Board.scss";
 import Column from "../Column/Column";
 import { connect } from "react-redux";
 import { fetchData } from "../../store/actions/actions";
-import PropTypes from "prop-types";
 
-export class Board extends React.Component {
-  constructor(props) {
+
+export interface IAppState {
+  boardStore: any;
+}
+
+interface IBoardProps {
+  fetchData: () => void;
+  removeCardFromColumn: (cardId: number, sourceCategory: string) => void;
+  moveCard: (cardId: number, sourceCategory: string, destinationCategory: string) => void;
+  updateCard: (card: any, destinationCategory: string) => void;
+  createCard?: (card: any, destinationCategory: string) => void;
+  boardStore: any;
+}
+
+interface IBoardState {
+  boardStore: IAppState["boardStore"];
+}
+
+export class Board extends React.Component<IBoardProps, IBoardState> {
+  constructor(props: IBoardProps) {
     super(props);
     this.state = { boardStore: {} };
   }
@@ -18,7 +35,7 @@ export class Board extends React.Component {
   render() {
     const boardColumns =
       (this.props.boardStore && Object.keys(this.props.boardStore)) || [];
-    const columns = boardColumns.map((category, key) => {
+    const columns = boardColumns.map((category: string, key: number) => {
       return (
         <Column
           key={key}
@@ -37,7 +54,7 @@ export class Board extends React.Component {
 }
 
 export default connect(
-  (state) => {
+  (state: IAppState) => {
     let boardStore;
     if (state.boardStore.constructor === Array) {
       boardStore = {};
@@ -46,10 +63,3 @@ export default connect(
   },
   { fetchData }
 )(Board);
-
-Board.propTypes = {
-  boardStore: PropTypes.object.isRequired,
-  removeCardFromColumn: PropTypes.func.isRequired,
-  moveCard: PropTypes.func.isRequired,
-  createCard: PropTypes.func.isRequired,
-};

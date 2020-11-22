@@ -3,16 +3,16 @@ import { DATA } from "../../common/data";
 import { read_cookie } from "sfcookies";
 import { BOARD_COOKIE } from "../../common/constants";
 
-export const moveCard = (cardId, sourceCategory, destinationCategory) => {
-  return (dispatch, getState) => {
+export const moveCard = (cardId: number, sourceCategory: string, destinationCategory: string) => {
+  return (dispatch: any, getState: any) => {
     const boardStore = getState().boardStore;
     dispatch(addCard(boardStore, cardId, sourceCategory, destinationCategory));
-    dispatch(removeCard(boardStore, cardId, sourceCategory));
+    dispatch(removeCardFromColumn(cardId, sourceCategory));
   };
 };
 
-export const updateCard = (card, destinationCategory) => {
-  return (dispatch, getState) => {
+export const updateCard = (card: any, destinationCategory: string) => {
+  return (dispatch: any, getState: any) => {
     const boardStore = getState().boardStore;
     const updatedCard = card;
     dispatch(removeCard(boardStore, card.id, destinationCategory));
@@ -21,12 +21,12 @@ export const updateCard = (card, destinationCategory) => {
 };
 
 export const addCard = (
-  boardStore,
-  cardId,
-  sourceCategory,
-  destinationCategory
+  boardStore: any,
+  cardId: number,
+  sourceCategory: string,
+  destinationCategory: string
 ) => {
-  const cardToMove = boardStore[sourceCategory].filter((card) => {
+  const cardToMove = boardStore[sourceCategory].filter((card: any) => {
     return card.id === +cardId;
   });
   boardStore[destinationCategory] = [
@@ -39,14 +39,14 @@ export const addCard = (
   };
 };
 
-export const createCard = (newCard, destinationCategory) => {
-  return (dispatch, getState) => {
+export const createCard = (newCard: any, destinationCategory: string) => {
+  return (dispatch: any, getState: any) => {
     const boardStore = getState().boardStore;
     dispatch(createNewCard(boardStore, newCard, destinationCategory));
   };
 };
 
-export const createNewCard = (boardStore, newCard, destinationCategory) => {
+export const createNewCard = (boardStore: any, newCard: any, destinationCategory: string) => {
   boardStore[destinationCategory] = [
     newCard,
     ...boardStore[destinationCategory],
@@ -57,9 +57,9 @@ export const createNewCard = (boardStore, newCard, destinationCategory) => {
   };
 };
 
-export const removeCard = (boardStore, cardId, sourceCategory) => {
+export const removeCard = (boardStore: any, cardId: number, sourceCategory: string) => {
   if (boardStore) {
-    boardStore[sourceCategory] = boardStore[sourceCategory].filter((card) => {
+    boardStore[sourceCategory] = boardStore[sourceCategory].filter((card: any) => {
       return card.id !== +cardId;
     });
   }
@@ -69,15 +69,15 @@ export const removeCard = (boardStore, cardId, sourceCategory) => {
   };
 };
 
-export const removeCardFromColumn = (cardId, sourceCategory) => {
-  return (dispatch, getState) => {
+export const removeCardFromColumn = (cardId: number, sourceCategory: string) => {
+  return (dispatch: any, getState: any) => {
     const boardStore = getState().boardStore;
     dispatch(removeCard(boardStore, cardId, sourceCategory));
   };
 };
 
 export const fetchData = () => {
-  return (dispatch) => {
+  return (dispatch: any) => {
     const boardStore = read_cookie(BOARD_COOKIE);
     let data;
     if (boardStore && boardStore.constructor === Array) {
@@ -88,14 +88,14 @@ export const fetchData = () => {
   };
 };
 
-export const receiveData = (data, state) => {
+export const receiveData = (data: any, state: any) => {
   return {
     type: constants.RECEIVE_DATA,
     state,
   };
 };
 
-export const updateBoard = (data, state) => {
+export const updateBoard = (data: any, state: any) => {
   return {
     type: constants.UPDATE_BOARD,
     state,

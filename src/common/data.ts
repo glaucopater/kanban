@@ -1,5 +1,5 @@
-export const DATA = { 
- 
+export const DATA = {
+
   "ToDo": [
     {
       "text": "Review request for proposal",

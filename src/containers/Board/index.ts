@@ -1,38 +1,30 @@
 import { connect } from "react-redux";
 import {
-  addCard,
-  removeCard,
   moveCard,
   removeCardFromColumn,
   createCard,
   updateCard,
 } from "../../store/actions/actions";
-import Board from "./template";
+import Board, { IAppState } from "./template";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: IAppState) => {
   return {
     boardStore: state.boardStore,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    addCard: (destinationCategory) => {
-      dispatch(addCard(destinationCategory));
-    },
-    removeCard: (cardId) => {
-      dispatch(removeCard(cardId));
-    },
-    moveCard: (cardId, sourceCategory, destinationCategory) => {
+    moveCard: (cardId: number, sourceCategory: string, destinationCategory: string) => {
       dispatch(moveCard(cardId, sourceCategory, destinationCategory));
     },
-    removeCardFromColumn: (cardId, sourceCategory) => {
+    removeCardFromColumn: (cardId: number, sourceCategory: string) => {
       dispatch(removeCardFromColumn(cardId, sourceCategory));
     },
-    createCard: (card, destinationCategory) => {
+    createCard: (card: any, destinationCategory: string) => {
       dispatch(createCard(card, destinationCategory));
     },
-    updateCard: (card, destinationCategory) => {
+    updateCard: (card: any, destinationCategory: string) => {
       dispatch(updateCard(card, destinationCategory));
     },
   };

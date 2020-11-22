@@ -1,10 +1,24 @@
 import React from "react";
 import Card from "../../components/Card/Card";
 import "./Column.scss";
-import PropTypes from "prop-types";
 
-export default class Column extends React.Component {
-  constructor(props) {
+
+interface IColumnProps {
+  category: string;
+  category_tasks: any;
+  createCard: any;
+  updateCard: (card: any, destinationCategory: string) => void;
+  moveCard: (cardId: number, sourceCategory: string, destinationCategory: string) => void;
+  removeCardFromColumn: (id: number, category: string) => void;
+}
+
+interface IColumnState {
+  category: string;
+  category_tasks: string[];
+}
+
+export default class Column extends React.Component<IColumnProps, IColumnState> {
+  constructor(props: IColumnProps) {
     super(props);
     this.state = {
       category: this.props.category,
@@ -18,7 +32,7 @@ export default class Column extends React.Component {
 
   handleAdd = () => {
     const maxIdPerCategory = Math.max(
-      ...this.props.category_tasks.map((o) => o.id),
+      ...this.props.category_tasks.map((item: any) => item.id),
       0
     );
     const nextId = maxIdPerCategory + 1;
@@ -28,32 +42,32 @@ export default class Column extends React.Component {
     this.props.createCard(new_task, this.props.category);
   };
 
-  handleRemove = (card_id_to_remove) => {
-    const category_tasks = this.props.category_tasks.filter((task) => {
+  handleRemove = (card_id_to_remove: number) => {
+    const category_tasks = this.props.category_tasks.filter((task: any) => {
       return task.id !== card_id_to_remove;
     });
     this.setState({ category_tasks });
     this.props.removeCardFromColumn(card_id_to_remove, this.state.category);
   };
 
-  handleUpdate = (card) => {
+  handleUpdate = (card: any) => {
     const new_task = card;
     const category_tasks = [new_task, ...this.props.category_tasks];
     this.setState({ category_tasks });
     this.props.updateCard(new_task, this.props.category);
   };
 
-  handleOnDragOver(ev) {
-    ev.preventDefault();
+  handleOnDragOver(event: any) {
+    event.preventDefault();
   }
 
-  handleOnDrop(ev) {
-    let id = ev.dataTransfer.getData("id");
-    let sourceCategory = ev.dataTransfer.getData("sourceCategory");
+  handleOnDrop(event: any) {
+    let id = event.dataTransfer.getData("id");
+    let sourceCategory = event.dataTransfer.getData("sourceCategory");
     this.moveTask(id, sourceCategory);
   }
 
-  moveTask(taskId, sourceCategory) {
+  moveTask(taskId: number, sourceCategory: string) {
     if (sourceCategory !== this.state.category) {
       this.props.moveCard(taskId, sourceCategory, this.state.category);
     }
@@ -62,7 +76,7 @@ export default class Column extends React.Component {
   render() {
     const category_tasks = this.props.category_tasks;
     const category = this.props.category ? this.props.category : "";
-    const cards = category_tasks.map((task, key) => {
+    const cards = category_tasks.map((task: any, key: number) => {
       return (
         <Card
           key={key}
@@ -78,10 +92,8 @@ export default class Column extends React.Component {
     return (
       <div
         className={"Column " + category}
-        category={category}
         onDrop={this.handleOnDrop}
         onDragOver={this.handleOnDragOver}
-        droppable="true"
       >
         <header>
           <h3>{category.split(/(?=[A-Z])/).join(" ")}</h3>
@@ -95,7 +107,3 @@ export default class Column extends React.Component {
     );
   }
 }
-
-Column.propTypes = {
-  category_tasks: PropTypes.array.isRequired,
-};
