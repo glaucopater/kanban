@@ -1,3 +1,3 @@
-import { combineReducers } from 'redux';
-import board_store from './board_store';  
-export default combineReducers({ board_store });
+import { combineReducers } from "redux";
+import boardStore from "./boardStore";
+export default combineReducers({ boardStore });

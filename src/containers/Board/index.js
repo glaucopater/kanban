@@ -11,7 +11,7 @@ import Board from "./template";
 
 const mapStateToProps = (state) => {
   return {
-    board_store: state.board_store,
+    boardStore: state.boardStore,
   };
 };
 

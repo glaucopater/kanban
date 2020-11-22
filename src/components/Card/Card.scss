@@ -1,13 +1,19 @@
 @import "../../styles/sass/variables.scss";
 @import "../../styles/sass/mixins.scss";
 
-.Card { 
+.Card {
   width: 50%;
-  margin: 5 * $offsetWidth auto;  
-  color: $white; 
-  text-align: center; 
-  position: relative; 
-  @include box-shadow(0 $offsetWidth 3 * $offsetWidth -$offsetWidth rgba($lightgrey, 0.1));
+  margin: 5 * $offsetWidth auto;
+  color: $white;
+  text-align: center;
+  position: relative;
+  @include box-shadow(
+    0 $offsetWidth 3 * $offsetWidth -$offsetWidth rgba($lightgrey, 0.1)
+  );
+}
+
+.Card:hover {
+  cursor: pointer;
 }
 
 .card-header {
@@ -15,8 +21,8 @@
 }
 
 .card-body {
-  padding: 2 * $offsetWidth; 
-  text-align: center; 
+  padding: 2 * $offsetWidth;
+  text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -25,7 +31,7 @@
   background: $color-card-todo;
 }
 
-.InProgress .Card  {
+.InProgress .Card {
   background: $color-card-inprogress;
 }
 
@@ -33,7 +39,7 @@
   background: $color-card-done;
 }
 
-.button-remove {  
+.button-remove {
   @include button();
   position: absolute;
   top: 0;
@@ -46,5 +52,5 @@
 
 textarea {
   overflow: hidden;
-  width: 80%
+  width: 80%;
 }

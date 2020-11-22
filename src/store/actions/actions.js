@@ -5,86 +5,86 @@ import { BOARD_COOKIE } from "../../common/constants";
 
 export const moveCard = (cardId, sourceCategory, destinationCategory) => {
   return (dispatch, getState) => {
-    const board_store = getState().board_store;
-    dispatch(addCard(board_store, cardId, sourceCategory, destinationCategory));
-    dispatch(removeCard(board_store, cardId, sourceCategory));
+    const boardStore = getState().boardStore;
+    dispatch(addCard(boardStore, cardId, sourceCategory, destinationCategory));
+    dispatch(removeCard(boardStore, cardId, sourceCategory));
   };
 };
 
 export const updateCard = (card, destinationCategory) => {
   return (dispatch, getState) => {
-    const board_store = getState().board_store;
+    const boardStore = getState().boardStore;
     const updatedCard = card;
-    dispatch(removeCard(board_store, card.id, destinationCategory));
-    dispatch(createNewCard(board_store, updatedCard, destinationCategory));
+    dispatch(removeCard(boardStore, card.id, destinationCategory));
+    dispatch(createNewCard(boardStore, updatedCard, destinationCategory));
   };
 };
 
 export const addCard = (
-  board_store,
+  boardStore,
   cardId,
   sourceCategory,
   destinationCategory
 ) => {
-  const cardToMove = board_store[sourceCategory].filter((card) => {
+  const cardToMove = boardStore[sourceCategory].filter((card) => {
     return card.id === +cardId;
   });
-  board_store[destinationCategory] = [
+  boardStore[destinationCategory] = [
     ...cardToMove,
-    ...board_store[destinationCategory],
+    ...boardStore[destinationCategory],
   ];
   return {
     type: constants.ADD_CARD,
-    board_store,
+    boardStore: boardStore,
   };
 };
 
 export const createCard = (newCard, destinationCategory) => {
   return (dispatch, getState) => {
-    const board_store = getState().board_store;
-    dispatch(createNewCard(board_store, newCard, destinationCategory));
+    const boardStore = getState().boardStore;
+    dispatch(createNewCard(boardStore, newCard, destinationCategory));
   };
 };
 
-export const createNewCard = (board_store, newCard, destinationCategory) => {
-  board_store[destinationCategory] = [
+export const createNewCard = (boardStore, newCard, destinationCategory) => {
+  boardStore[destinationCategory] = [
     newCard,
-    ...board_store[destinationCategory],
+    ...boardStore[destinationCategory],
   ];
   return {
     type: constants.CREATE_CARD,
-    board_store,
+    boardStore: boardStore,
   };
 };
 
-export const removeCard = (board_store, cardId, sourceCategory) => {
-  if (board_store) {
-    board_store[sourceCategory] = board_store[sourceCategory].filter((card) => {
+export const removeCard = (boardStore, cardId, sourceCategory) => {
+  if (boardStore) {
+    boardStore[sourceCategory] = boardStore[sourceCategory].filter((card) => {
       return card.id !== +cardId;
     });
   }
   return {
     type: constants.REMOVE_CARD,
-    board_store,
+    boardStore: boardStore,
   };
 };
 
 export const removeCardFromColumn = (cardId, sourceCategory) => {
   return (dispatch, getState) => {
-    const board_store = getState().board_store;
-    dispatch(removeCard(board_store, cardId, sourceCategory));
+    const boardStore = getState().boardStore;
+    dispatch(removeCard(boardStore, cardId, sourceCategory));
   };
 };
 
 export const fetchData = () => {
   return (dispatch) => {
-    const board_store = read_cookie(BOARD_COOKIE);
+    const boardStore = read_cookie(BOARD_COOKIE);
     let data;
-    if (board_store && board_store.constructor === Array) {
+    if (boardStore && boardStore.constructor === Array) {
       data = DATA;
-    } else data = board_store;
+    } else data = boardStore;
 
-    dispatch({ type: constants.RECEIVE_DATA, board_store: data });
+    dispatch({ type: constants.RECEIVE_DATA, boardStore: data });
   };
 };
 

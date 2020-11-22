@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { board_store: {} };
+    this.state = { boardStore: {} };
   }
 
   componentDidMount() {
@@ -16,7 +16,9 @@ export class Board extends React.Component {
   }
 
   render() {
-    const columns = Object.keys(this.props.board_store).map((category, key) => {
+    const boardColumns =
+      (this.props.boardStore && Object.keys(this.props.boardStore)) || [];
+    const columns = boardColumns.map((category, key) => {
       return (
         <Column
           key={key}
@@ -25,7 +27,7 @@ export class Board extends React.Component {
           moveCard={this.props.moveCard}
           createCard={this.props.createCard}
           updateCard={this.props.updateCard}
-          category_tasks={this.props.board_store[category]}
+          category_tasks={this.props.boardStore[category]}
         />
       );
     });
@@ -36,17 +38,17 @@ export class Board extends React.Component {
 
 export default connect(
   (state) => {
-    let board_store;
-    if (state.board_store.constructor === Array) {
-      board_store = {};
-    } else board_store = state.board_store;
-    return { board_store: board_store };
+    let boardStore;
+    if (state.boardStore.constructor === Array) {
+      boardStore = {};
+    } else boardStore = state.boardStore;
+    return { boardStore };
   },
   { fetchData }
 )(Board);
 
 Board.propTypes = {
-  board_store: PropTypes.object.isRequired,
+  boardStore: PropTypes.object.isRequired,
   removeCardFromColumn: PropTypes.func.isRequired,
   moveCard: PropTypes.func.isRequired,
   createCard: PropTypes.func.isRequired,
