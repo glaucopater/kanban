@@ -3,7 +3,7 @@ import "./styles.scss";
 
 interface ICardProps {
   category: string;
-  category_tasks?: any;
+  categoryTasks?: any;
   createCard?: any;
   removeCard?: any;
   updateCard?: any;
@@ -20,8 +20,10 @@ interface ICardState {
   editable?: boolean;
 }
 
-export const Card : React.FC<ICardProps> = (props) => {
+export const Card: React.FC<ICardProps> = (props) => {
   const [state, setState] = React.useState<ICardState>(props);
+  const [isDragged, setIsDragged] = React.useState<boolean>(false);
+
   React.useEffect(() => {
     setState({ editable: false, value: "", text: "", id: 0 });
   }, [props.category]);
@@ -49,9 +51,14 @@ export const Card : React.FC<ICardProps> = (props) => {
   const handleOnDragStart = (ev: any, id: number) => {
     ev.dataTransfer.setData("id", id);
     ev.dataTransfer.setData("sourceCategory", props.category);
+    setIsDragged(true);
   };
 
-  const getInputField = () =>{
+  const handleOnDragStop = () => {
+    setIsDragged(false);
+  }
+
+  const getInputField = () => {
     return (
       <textarea
         value={state.value}
@@ -67,13 +74,12 @@ export const Card : React.FC<ICardProps> = (props) => {
 
   return (
     <div
-      className={"Card " + props.category}
+      className={"Card " + props.category + " " + (isDragged ? "isDragged" : "")}
       onDragStart={(e) => handleOnDragStart(e, props.id)}
+      onDragEnd={handleOnDragStop}
       draggable
     >
-      <button className="button-remove" onClick={handleOnRemove}>
-        x
-      </button>
+      <button className="button-remove" onClick={handleOnRemove}>✖</button>
       <div className="card-body" onClick={handleOnEdit}>
         {content}
       </div>

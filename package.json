@@ -37,7 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject"
   },
   "browserslist": [
@@ -52,21 +52,8 @@
       "src/**/*.ts*",
       "!src/index.js",
       "!src/setupTests.js",
-      "!src/tempPolyfills.js"
+      "!src/tempPolyfills.js",
+      "!src/**/__snapshots__/"
     ]
-  },
-  "wallaby": {
-    "files": [
-      "src/**/*.ts",
-      "!src/**/*.spec.ts"
-    ],
-    "tests": [
-      "src/**/*.spec.ts"
-    ],
-    "env": {
-      "type": "node"
-    },
-    "testFramework": "jest",
-    "debug": true
   }
 }

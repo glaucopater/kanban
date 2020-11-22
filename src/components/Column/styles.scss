@@ -14,14 +14,17 @@
     padding: $offsetWidth;
     margin: $offsetWidth;
   }
-  > header {
-    position: relative;
+  > header  {
+    display: flex;
+    border: 1px solid red;
+    flex-direction: column;
     border-bottom: 2px solid $white;
-    .counter {
-      margin-bottom: $offsetWidth;
-    }
+    place-content: center;
+    place-items: center;
+    padding: 4px;
   }
 }
+
 
 .ToDo {
   background: $color-column-todo;
@@ -49,7 +52,4 @@
 
 .add-button {
   @include button();
-  position: absolute;
-  top: 50%;
-  right: 0;
 }

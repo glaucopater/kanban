@@ -22,36 +22,41 @@ interface IBoardState {
   boardStore: IAppState["boardStore"];
 }
 
-export class Board extends React.Component<IBoardProps, IBoardState> {
-  constructor(props: IBoardProps) {
-    super(props);
-    this.state = { boardStore: {} };
-  }
+export const Board: React.FC<IBoardProps & IBoardState> = (props: IBoardProps) => {
+  const [, setState] = React.useState<IBoardState>(props);
 
-  componentDidMount() {
-    this.props.fetchData();
-  }
+  const { boardStore, fetchData } = props;
 
-  render() {
-    const boardColumns =
-      (this.props.boardStore && Object.keys(this.props.boardStore)) || [];
-    const columns = boardColumns.map((category: string, key: number) => {
-      return (
-        <Column
-          key={key}
-          category={category}
-          removeCardFromColumn={this.props.removeCardFromColumn}
-          moveCard={this.props.moveCard}
-          createCard={this.props.createCard}
-          updateCard={this.props.updateCard}
-          category_tasks={this.props.boardStore[category]}
-        />
-      );
+  React.useEffect(() => {
+    setState({
+      boardStore: {}
     });
+  }, [boardStore]);
 
-    return <div className="Board">{columns}</div>;
-  }
+  React.useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+
+  const boardColumns =
+    (props.boardStore && Object.keys(props.boardStore)) || [];
+  const columns = boardColumns.map((category: string, key: number) => {
+    return (
+      <Column
+        key={key}
+        category={category}
+        removeCardFromColumn={props.removeCardFromColumn}
+        moveCard={props.moveCard}
+        createCard={props.createCard}
+        updateCard={props.updateCard}
+        categoryTasks={props.boardStore[category]}
+      />
+    );
+  });
+
+  return <div className="Board"> {columns} </div>;
 }
+
 
 export default connect(
   (state: IAppState) => {

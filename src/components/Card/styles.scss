@@ -16,6 +16,11 @@
   cursor: pointer;
 }
 
+.isDragged, .isDragged:hover {
+  cursor: move;
+  border: 1px dashed grey;
+}
+
 .card-header {
   outline: 1px solid $blue;
 }
