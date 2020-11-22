@@ -14,7 +14,7 @@ const initialState = {
   boardStore: {},
 };
 
-const boardStore = (state = initialState.boardStore, action) => {
+const boardStore = (state = initialState.boardStore, action: any) => {
   let boardStore;
   switch (action.type) {
     case ADD_CARD:

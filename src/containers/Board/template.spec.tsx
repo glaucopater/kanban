@@ -1,5 +1,5 @@
 import React from "react";
-import { Board } from "./template";
+import { Board }  from "./template";
 import { shallow } from "enzyme";
 
 describe("Board", () => {

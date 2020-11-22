@@ -1,8 +1,8 @@
 import React from "react";
 import "./Board.scss";
-import Column from "../Column/Column";
 import { connect } from "react-redux";
 import { fetchData } from "../../store/actions/actions";
+import { Column } from "../../components/Column/template";
 
 
 export interface IAppState {

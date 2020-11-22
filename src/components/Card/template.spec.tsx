@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./Card";
 import { shallow } from "enzyme";
+import { Card } from "./";
 
 describe("Card", () => {
   const props = { id: 1, text: "abc", value: "", category: "abc" };

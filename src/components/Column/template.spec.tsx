@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Column from "./Column";
+import { Column } from "./";
 
 describe("Column", () => {
   const props = {
@@ -11,7 +11,7 @@ describe("Column", () => {
     updateCard: jest.fn(),
     removeCardFromColumn: jest.fn(),
   };
-  let column = shallow(<Column {...props} />);
+  const column = shallow(<Column {...props} />);
   it("renders properly", () => {
     expect(column).toMatchSnapshot();
   });
