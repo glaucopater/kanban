@@ -1,0 +1,55 @@
+@import "../../styles/sass/variables.scss";
+@import "../../styles/sass/mixins.scss";
+
+.Column {
+  border: 1px solid $white;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: auto;
+  min-width: 33%;
+  color: white;
+  text-align: center;
+  > h3 {
+    padding: $offsetWidth;
+    margin: $offsetWidth;
+  }
+  > header  {
+    display: flex;
+    border: 1px solid red;
+    flex-direction: column;
+    border-bottom: 2px solid $white;
+    place-content: center;
+    place-items: center;
+    padding: 4px;
+  }
+}
+
+
+.ToDo {
+  background: $color-column-todo;
+}
+
+.ToDo > header {
+  background: $color-column-header-todo;
+}
+
+.InProgress {
+  background: $color-column-inprogress;
+}
+
+.InProgress header {
+  background: $color-column-header-inprogress;
+}
+
+.Done {
+  background: $color-column-done;
+}
+
+.Done header {
+  background: $color-column-header-done;
+}
+
+.add-button {
+  @include button();
+}

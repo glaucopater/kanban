@@ -1,2 +1,2 @@
 # kanban
-a React kanban board
+A kanban board made with React, TypeScript and Redux
