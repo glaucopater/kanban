@@ -19,7 +19,7 @@ interface IBoardProps {
 }
 
 interface IBoardState {
-  boardStore: IAppState["boardStore"];
+  boardStore: any;
 }
 
 export const Board: React.FC<IBoardProps & IBoardState> = (props: IBoardProps) => {
