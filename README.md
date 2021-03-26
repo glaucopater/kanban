@@ -3,6 +3,8 @@ A kanban board poc.
 
 Made with React, TypeScript and Redux
 
+Demo
+![Demo](/public/demo.jpg)
 
 To install the dependencies:
 ---

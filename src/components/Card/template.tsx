@@ -74,7 +74,7 @@ export const Card: React.FC<ICardProps> = (props) => {
 
   return (
     <div
-      className={"Card " + props.category + " " + (isDragged ? "isDragged" : "")}
+      className={`Card ${props.category}` + (isDragged ? "isDragged" : "")}
       onDragStart={(e) => handleOnDragStart(e, props.id)}
       onDragEnd={handleOnDragStop}
       draggable
