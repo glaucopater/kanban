@@ -32,7 +32,8 @@ export const Column: React.FC<IColumnProps & IColumnState> = (props) => {
       0
     );
     const nextId = maxIdPerCategory + 1;
-    const new_task = { id: nextId, text: "Card " + nextId };
+    const cardText = `${"Card" + nextId}`;
+    const new_task = { id: nextId, text: cardText };
     const categoryTasks = [new_task, ...props.categoryTasks];
     setState({ ...state, category: state.category, categoryTasks: categoryTasks });
     props.createCard(new_task, props.category);

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "description": "",
-  "keywords": [],
+  "keywords": ["kanban", "poc", "react"],
   "main": "src/index.js",
   "dependencies": {
     "@types/enzyme": "^3.10.8",
